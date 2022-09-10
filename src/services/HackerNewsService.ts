@@ -1,6 +1,6 @@
 const apiUrl: string = "https://hacker-news.firebaseio.com/v0/";
 
-interface Item {
+export interface Item {
     id: number;
     deleted: boolean;
     type: string;
@@ -18,7 +18,7 @@ interface Item {
     descendants: number;
 }
 
-interface User {
+export interface User {
     id: string;
     created: number;
     karma: number;
@@ -35,7 +35,7 @@ function apiFetch<T>(url: string): Promise<T> {
     });
 }
 
-const HackerNewsService = {
+export const HackerNewsService = {
     getTopStories(): Promise<number[]> {
         return apiFetch<number[]>(`topstories.json`);
     },
@@ -46,5 +46,3 @@ const HackerNewsService = {
         return apiFetch<User>(`user/${id}.json`);
     },
 };
-
-export {};
