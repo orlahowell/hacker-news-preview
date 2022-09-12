@@ -1,23 +1,31 @@
-import React from "react";
-import { Item } from "../services/HackerNewsService";
+import React, { useState, useEffect } from "react";
+import { Item, HackerNewsService } from "../services/HackerNewsService";
+import StoryDisplay from "./StoryDisplay";
 
 interface StoryProps {
-    story: Item;
+    storyId: number;
 }
 
 const Story = (props: StoryProps) => {
-    const { story } = props;
+    const [story, setStory] = useState<Item | null>(null);
+    const { storyId } = props;
+
+    useEffect(() => {
+        if (story === null) {
+            HackerNewsService.getItem(storyId)
+                .then((res) => setStory(res))
+                .catch((err) => console.log("story fetch failed"));
+        }
+    }, [story, storyId]);
 
     return (
-        <div>
-            <h3>{story.title}</h3>
-            <p>{story.url}</p>
-            <p>{story.time}</p>
-            <p>{story.score}</p>
-            <p>
-                <b>{story.by}</b>
-            </p>
-        </div>
+        <>
+            {story ? (
+                <StoryDisplay story={story}></StoryDisplay>
+            ) : (
+                <p>Loading</p>
+            )}
+        </>
     );
 };
 

@@ -36,8 +36,11 @@ function apiFetch<T>(url: string): Promise<T> {
 }
 
 export const HackerNewsService = {
-    getTopStories(): Promise<number[]> {
-        return apiFetch<number[]>(`topstories.json`);
+    getTopStories(limit: number): Promise<number[]> {
+        //would be better with limit in query to api but can't see query option anywhere in docs
+        return apiFetch<number[]>(`topstories.json`).then((res) =>
+            res.slice(0, limit)
+        );
     },
     getItem(id: number): Promise<Item> {
         return apiFetch<Item>(`item/${id}.json`);
