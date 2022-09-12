@@ -1,4 +1,3 @@
-import { Item, User } from "../services/HackerNewsService";
 import "../scss/Story.scss";
 
 const StoryDisplay = () => {

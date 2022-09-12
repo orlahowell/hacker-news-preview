@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.scss";
 import { HackerNewsService } from "./services/HackerNewsService";
 import Story from "./components/Story";
+import LoadingIcon from "./components/LoadingIcon";
 
 function App() {
     const [topStories, setTopStories] = useState<number[] | null>(null);
@@ -23,7 +24,7 @@ function App() {
                 {topStories ? (
                     topStories.map((storyId) => <Story storyId={storyId} />)
                 ) : (
-                    <p>Loading...</p>
+                    <LoadingIcon />
                 )}
             </div>
         </div>
