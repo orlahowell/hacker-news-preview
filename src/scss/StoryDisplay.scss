@@ -1,0 +1,40 @@
+.storyBox {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+    width: 330px;
+    overflow: hidden;
+    &__image {
+        width: 100%;
+        height: 250px;
+        background-image: url("../../public/placeholder.jpg");
+        background-position: center;
+        background-size: cover;
+    }
+    &__subtitle {
+        display: flex;
+        justify-content: space-between;
+        padding: 14px 6px;
+
+        text-transform: uppercase;
+        p {
+            font-size: 11px;
+            margin: 0;
+            opacity: 0.5;
+        }
+    }
+    &__text {
+        display: flex;
+        flex-direction: column;
+        padding: 0 6px;
+        h2 {
+            margin: 0;
+        }
+        a {
+            font-size: 14px;
+            text-decoration: none;
+            color: inherit;
+            margin: 4px 0;
+        }
+    }
+}

@@ -1,0 +1,31 @@
+#root {
+    background-color: #f9f9f9;
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    align-items: center;
+    max-width: 1120px;
+}
+
+.app__title {
+    padding: 0 32px;
+    border-bottom: 1px lightgrey solid;
+    flex: 1;
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.stories-container {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    padding: 32px;
+    justify-content: center;
+}

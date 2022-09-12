@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Item, HackerNewsService } from "../services/HackerNewsService";
+import { Item, User, HackerNewsService } from "../services/HackerNewsService";
 import StoryDisplay from "./StoryDisplay";
 
 interface StoryProps {
@@ -8,6 +8,7 @@ interface StoryProps {
 
 const Story = (props: StoryProps) => {
     const [story, setStory] = useState<Item | null>(null);
+    const [user, setUser] = useState<User | null>(null);
     const { storyId } = props;
 
     useEffect(() => {
@@ -18,10 +19,18 @@ const Story = (props: StoryProps) => {
         }
     }, [story, storyId]);
 
+    useEffect(() => {
+        if (story !== null && user === null) {
+            HackerNewsService.getUser(story.by)
+                .then((res) => setUser(res))
+                .catch((err) => console.log("user fetch failed"));
+        }
+    }, [user, story]);
+
     return (
         <>
-            {story ? (
-                <StoryDisplay story={story}></StoryDisplay>
+            {story && user ? (
+                <StoryDisplay story={story} user={user}></StoryDisplay>
             ) : (
                 <p>Loading</p>
             )}

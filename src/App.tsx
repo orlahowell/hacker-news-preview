@@ -15,12 +15,17 @@ function App() {
     }, [topStories]);
 
     return (
-        <div className="stories-container">
-            {topStories ? (
-                topStories.map((storyId) => <Story storyId={storyId} />)
-            ) : (
-                <p>Loading...</p>
-            )}
+        <div className="app">
+            <div className="app__title">
+                <h1>Hacker News</h1>
+            </div>
+            <div className="stories-container">
+                {topStories ? (
+                    topStories.map((storyId) => <Story storyId={storyId} />)
+                ) : (
+                    <p>Loading...</p>
+                )}
+            </div>
         </div>
     );
 }
