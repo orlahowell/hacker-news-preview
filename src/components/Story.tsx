@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Item, User, HackerNewsService } from "../services/HackerNewsService";
 import StoryDisplay from "./StoryDisplay";
+import StorySkeleton from "./StorySkeleton";
 
 interface StoryProps {
     storyId: number;
@@ -30,9 +31,9 @@ const Story = (props: StoryProps) => {
     return (
         <>
             {story && user ? (
-                <StoryDisplay story={story} user={user}></StoryDisplay>
+                <StoryDisplay story={story} user={user} />
             ) : (
-                <p>Loading</p>
+                <StorySkeleton />
             )}
         </>
     );

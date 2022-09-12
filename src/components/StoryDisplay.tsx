@@ -1,17 +1,10 @@
 import { Item, User } from "../services/HackerNewsService";
-import "../scss/StoryDisplay.scss";
+import "../scss/Story.scss";
 
 interface StoryDisplayProps {
     story: Item;
     user: User;
 }
-
-const options = {
-    weekday: "long",
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-};
 
 const StoryDisplay = (props: StoryDisplayProps) => {
     const { story, user } = props;
@@ -26,7 +19,8 @@ const StoryDisplay = (props: StoryDisplayProps) => {
                     {date.toLocaleTimeString()}
                 </p>
                 <p>
-                    <b>{story.score}</b>
+                    <b>{story.score} </b>
+                    <a href={story.url}>&#x1F30D;</a>
                 </p>
             </div>
             <div className="storyBox__text">
@@ -37,9 +31,6 @@ const StoryDisplay = (props: StoryDisplayProps) => {
                     <b>{story.by} </b>
                     {user.karma}
                 </p>
-            </div>
-            <div className="storyBox__text">
-                <a href={story.url}>&#x1F30D;</a>
             </div>
         </div>
     );
